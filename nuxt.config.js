@@ -2,6 +2,7 @@ export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'tourapp',
+    ssr: false,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -13,7 +14,7 @@ export default {
   },
   loading: true,
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['~/assets/main.scss'],
+  css: ['~/assets/scss/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
@@ -26,6 +27,11 @@ export default {
       {
         path: '~/components/widget/',
         prefix: 'Widget'
+      },
+      '~/components',
+      {
+        path: '~/components/global/',
+        prefix: 'Global'
       }
     ]
   },
@@ -41,5 +47,12 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    extractCSS: true
+  },
+  /*
+  ** serverside
+   */
+  serverMiddleware: {
+    '/api': '~/server'
   }
 }

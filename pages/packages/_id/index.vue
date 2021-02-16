@@ -1,5 +1,5 @@
 ﻿<template>
-<div class="container mt-4">
+<div class="container mt-4 mb-3">
   <h1>{{model.hotelname}}</h1>
   <b-card
     overlay
@@ -20,7 +20,7 @@ export default {
     }
   },
   async fetch () {
-    this.model = await fetch(`/api/hotels/${this.$route.params.id}`)
+    this.model = await fetch(`http://my-json-server.typicode.com/firatgokalp/tourismjsonserver/hotels/${this.$route.params.id}`)
                      .then((res) => res.json())
   }
 }

@@ -1,5 +1,6 @@
 ﻿<template>
-  <div class="mt-4 featured">
+  <p class="text-center p-4" v-if="$fetchState.pending">Fetching featured hotels...</p>
+  <div class="mt-4 featured" v-else>
     <h1>Featured Hotels</h1>
     <b-card-group deck>
       <b-card v-for="item in model" :key="`featureshotel${item.id}`" :img-src="item.thumb" img-alt="Image" img-top>

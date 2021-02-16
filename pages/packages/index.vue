@@ -1,13 +1,11 @@
 ﻿<template>
   <div class="container">
-    <GlobalPageTitle>Search results for "{{$route.query.keyword}}"</GlobalPageTitle>
-    <!-- <h1 class="mt-4 mb-3">Search results for "{{$route.query.keyword}}"</h1> -->
     <ul class="list-unstyled">
       <b-media tag="li" v-for="item in model" :key="`hotelitem${item.id}`" class="p-3 border m-2">
         <template #aside>
-          <a :href="item.url">
+          <NuxtLink :to="item.url">
             <b-img :src="item.thumb" width="64" :alt="item.hotelname"></b-img>
-          </a>
+          </NuxtLink>
         </template>
         <h5 class="mt-0 mb-1">
           <NuxtLink :to="item.url">
@@ -29,7 +27,7 @@ export default {
   },
   async fetch () {
     this.model = await fetch(
-      '/api/hotels'
+      'http://my-json-server.typicode.com/firatgokalp/tourismjsonserver/hotels'
     ).then(res => res.json())
   }
 }
